@@ -30,9 +30,12 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
+          file: Dockerfile.dev
           push: true
           tags: |
             ghcr.io/casadeferro/postiz-app:latest
             ghcr.io/casadeferro/postiz-app:${{ github.sha }}
+          build-args: |
+            NEXT_PUBLIC_VERSION=harbour
           cache-from: type=gha
           cache-to: type=gha,mode=max
